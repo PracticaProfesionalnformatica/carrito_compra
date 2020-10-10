@@ -2,8 +2,68 @@
 
 @section('body-class', 'landing-page')
 
+@section('styles')
+    <style>
+        .team .row .col-md-4 {
+            margin-bottom: 5em;
+        }
+        .team .row {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display:         flex;
+          flex-wrap: wrap;
+        }
+        .team .row > [class*='col-'] {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .tt-query {
+          -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+
+        .tt-hint {
+          color: #999
+        }
+
+        .tt-menu {    /* used to be tt-dropdown-menu in older versions */
+          width: 222px;
+          margin-top: 4px;
+          padding: 4px 0;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          -webkit-border-radius: 4px;
+             -moz-border-radius: 4px;
+                  border-radius: 4px;
+          -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+             -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+                  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        }
+
+        .tt-suggestion {
+          padding: 3px 20px;
+          line-height: 24px;
+        }
+
+        .tt-suggestion.tt-cursor,.tt-suggestion:hover {
+          color: #fff;
+          background-color: #0097cf;
+
+        }
+
+        .tt-suggestion p {
+          margin: 0;
+        }
+    </style>
+@endsection
+
+
 @section('content')
-<div class="header header-filter" style="background-image: url('{{asset('img/fondo.jpeg') }}'); background-size: cover; background-position: top center;">
+<div class="header header-filter" style="background-image: url('{{asset('img/fondo2.jpg') }}'); background-size: cover; background-position: top center;">
            
     <div class="container">
         <div class="row">
@@ -25,7 +85,8 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <h2 class="title">¿Por qué confiar en Librería y Variedades Villafranco?</h2>
-                    <h5 class="description">Puedes revisar nuestra relación completa de productos, comparar precios y realizar tus pedidos cuando estés seguro..</h5>
+                    <h5 class="description">Puedes revisar nuestra relación completa de productos, comparar precios y realizar tus pedidos cuando estés seguro..
+                    </h5>
                 </div>
             </div>
 
@@ -60,7 +121,7 @@
                     </div>
                 </div>
             </div>
-        </div>-->
+        </div>
 
         <div class="section text-center">
             <h2 class="title">Productos Disponibles</h2>
@@ -70,20 +131,29 @@
                     @foreach ($products as $product)
                     <div class="col-md-4">
                         <div class="team-player">
-                            <img src="{{ $product->images()->first()->image }}" alt="Thumbnail Image" class="img-raised img-circle">
-                            <h4 class="title">{{ $product->name }} <br />
+                        
+                            <img src="{{  $product->featured_image_url }}" alt="Thumbnail Image" class="img-raised img-circle">  
+                            <h4 class="title">
+                                <a href="{{ url ('/products/'.$product->id) }}">{{ $product->name }}</a>
+                                <br />
                                 <small class="text-muted">{{ $product->category->name }}</small>
                             </h4>
                             <p class="description">{{ $product->description }}</p>
-                            <a href="#pablo" class="btn btn-simple btn-just-icon"><i class="fa fa-twitter"></i></a>
+                            <!-- <a href="#pablo" class="btn btn-simple btn-just-icon"><i class="fa fa-twitter"></i></a>
                             <a href="#pablo" class="btn btn-simple btn-just-icon"><i class="fa fa-instagram"></i></a>
-                            <a href="#pablo" class="btn btn-simple btn-just-icon btn-default"><i class="fa fa-facebook-square"></i></a>
+                            <a href="#pablo" class="btn btn-simple btn-just-icon btn-default"><i class="fa fa-facebook-square"></i></a> -->
                         </div>
                    
                     </div>
                     @endforeach
                 </div>
+                <div class="text-center">
+                    {{ $products->links() }}
+                    
+                </div>
+                    
             </div>
+
 
         </div>
 

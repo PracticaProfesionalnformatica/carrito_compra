@@ -3,7 +3,7 @@
 @section('body-class', 'signup-page')
 
 @section('content')
-<div class="header header-filter" style="background-image: url('{{asset('img/fondo.jpeg') }}'); background-size: cover; background-position: top center;">
+<div class="header header-filter" style="background-image: url('{{asset('img/fondo2.jpg') }}'); background-size: cover; background-position: top center;">
 
     <div class="container">
         <div class="row">

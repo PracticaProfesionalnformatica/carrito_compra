@@ -18,6 +18,7 @@
     <!-- CSS Files -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/material-kit.css') }}" rel="stylesheet"/>
+    @yield('styles')
 
 </head>
 
@@ -33,7 +34,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-                <a class="navbar-brand" href="{{url ('/') }}"><img src="{{asset('img/log.png') }} " width="450" >  
+                 <a class="navbar-brand" href="{{url ('/') }}"><img src="{{asset('img/log.png') }} " width="400" > 
 
             </div>
 
@@ -46,6 +47,17 @@
                     @else
                         <ul class="dropdown" >
                             </ul>
+                            @if (auth()->user()->admin)
+                            <li>
+                                <a href="{{ url('/home') }}">Dashboard</a>
+                            </li>
+                            <li>
+                                    <a href="{{ url('/admin/categories') }}">Gestionar categorías</a>
+                                </li>
+                             <li>
+                                    <a href="{{ url('/admin/products') }}">Gestionar productos</a>
+                                </li>
+                            @endif    
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-haspopup="true" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -81,6 +93,7 @@
                             <i class="fa fa-instagram"></i>
                         </a>
                     </li> -->
+                    
                 </ul>
             </div>
         </div>
@@ -88,7 +101,7 @@
 
     <div class="wrapper">
         @yield('content')
-         
+          
     </div>
 </body>
     <!--   Core JS Files   -->
