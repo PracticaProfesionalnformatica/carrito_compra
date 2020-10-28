@@ -72,7 +72,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-6">
-                <h1 class="title">Bienvenido a Carrito de Compra .</h1>
+                <h1 class="title">Bienvenido a {{config('app.name' ) }} .</h1>
                 <h4>Realiza pedidos en línea y te contactaremos para cordinar entrega.</h4>
                 <br />
                 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-danger btn-raised btn-lg">
