@@ -28,7 +28,7 @@ class Product extends Model
             return $featuredImage->url;
         }
          // default
-        return '/images/products/descarga.jpg';
+        return '/images/descarga.jpg';
 
     }
 
